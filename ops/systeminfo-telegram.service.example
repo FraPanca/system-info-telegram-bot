@@ -1,0 +1,18 @@
+# Cambia "TUO_UTENTE" con il valore corretto e adatta i percorsi alla tua installazione
+[Unit]
+Description=Personal Telegram System Info Bot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=TUO_UTENTE
+WorkingDirectory=/home/TUO_UTENTE/telegram-bots/systeminfo
+EnvironmentFile=/home/TUO_UTENTE/telegram-bots/systeminfo/.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStart=/home/TUO_UTENTE/telegram-bots/systeminfo/venv/bin/python /home/TUO_UTENTE/telegram-bots/systeminfo/src/bot.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
